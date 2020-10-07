@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -37,6 +39,40 @@ namespace TechJobsConsole
             }
             return values;
         }
+
+        
+        public static List<Dictionary<string, string>> FindByValue(string searchQueue)
+        {
+            LoadData();
+            //List<string> values = new List<string>();
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+            foreach (string column in AllJobs[0].Keys)
+            {
+                
+                //Console.WriteLine(column);
+                foreach (Dictionary<string, string> row in AllJobs)
+                {
+                    string aSearch = row[column];
+
+                    if (aSearch.Contains(searchQueue) && !jobs.Contains(row))
+                    {
+                        jobs.Add(row);
+                    }
+                }
+                
+            }
+            return jobs;
+        } 
+
+        
+
+
+        //should not contain duplicate jobs
+        //should automatically search new columns
+        //utilized loops and collection methods
+        //FindByColumnAndValue is your friend (line 49)
+
+
 
         public static List<Dictionary<string, string>> FindByColumnAndValue(string column, string value)
         {

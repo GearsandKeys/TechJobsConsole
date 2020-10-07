@@ -63,12 +63,20 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        searchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(searchResults);
+                        
+                        //Console.WriteLine("Search all fields not yet implemented."); //Need to find this... search all categories for something function maybe something like PrintJobs.includes(JobData.FindAll());
                     }
                     else
                     {
                         searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
                         PrintJobs(searchResults);
+                        if (searchResults.Count < 1)
+                        {
+                            Console.WriteLine("\nNo Results found.");
+                        }
+                        //somewhere in here I need to setup that no results brings an error.
                     }
                 }
             }
@@ -118,7 +126,17 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            for (int i=0; i < someJobs.Count; i++)
+            {
+                Console.WriteLine("*****");
+                foreach (KeyValuePair<string, string> job in someJobs[i])
+                {
+                    Console.WriteLine($" {job.Key} : {job.Value}");
+                    
+                }
+                Console.WriteLine("*****");
+            }
+            //Console.WriteLine("PrintJobs is not implemented yet");
         }
     }
 }
