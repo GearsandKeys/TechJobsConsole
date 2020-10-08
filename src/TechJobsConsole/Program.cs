@@ -65,8 +65,11 @@ namespace TechJobsConsole
                     {
                         searchResults = JobData.FindByValue(searchTerm);
                         PrintJobs(searchResults);
+                        if (searchResults.Count < 1)
+                        {
+                            Console.WriteLine("\nNo Results Found.");
+                        }
                         
-                        //Console.WriteLine("Search all fields not yet implemented."); //Need to find this... search all categories for something function maybe something like PrintJobs.includes(JobData.FindAll());
                     }
                     else
                     {
@@ -74,9 +77,9 @@ namespace TechJobsConsole
                         PrintJobs(searchResults);
                         if (searchResults.Count < 1)
                         {
-                            Console.WriteLine("\nNo Results found.");
+                            Console.WriteLine("\nNo Results Found.");
                         }
-                        //somewhere in here I need to setup that no results brings an error.
+                        
                     }
                 }
             }
@@ -136,7 +139,7 @@ namespace TechJobsConsole
                 }
                 Console.WriteLine("*****");
             }
-            //Console.WriteLine("PrintJobs is not implemented yet");
+            
         }
     }
 }

@@ -54,7 +54,7 @@ namespace TechJobsConsole
                 {
                     string aSearch = row[column];
 
-                    if (aSearch.Contains(searchQueue) && !jobs.Contains(row))
+                    if (aSearch.ToLower().Contains(searchQueue.ToLower()) && !jobs.Contains(row))
                     {
                         jobs.Add(row);
                     }
@@ -64,13 +64,6 @@ namespace TechJobsConsole
             return jobs;
         } 
 
-        
-
-
-        //should not contain duplicate jobs
-        //should automatically search new columns
-        //utilized loops and collection methods
-        //FindByColumnAndValue is your friend (line 49)
 
 
 
@@ -85,7 +78,7 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
