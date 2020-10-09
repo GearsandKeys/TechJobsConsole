@@ -10,12 +10,15 @@ namespace TechJobsConsole
     class JobData
     {
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
+        
+        //IList<string> roDinosaurs = dinosaurs.AsReadOnly();
         static bool IsDataLoaded = false;
 
-        public static List<Dictionary<string, string>> FindAll()
+        public static IList<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            return AllJobs;
+            IList<Dictionary<string, string>> roAllJobs = AllJobs.AsReadOnly();
+            return roAllJobs;
         }
 
         /*
@@ -36,6 +39,7 @@ namespace TechJobsConsole
                 {
                     values.Add(aValue);
                 }
+                values.Sort();
             }
             return values;
         }

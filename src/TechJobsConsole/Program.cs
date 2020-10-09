@@ -127,7 +127,7 @@ namespace TechJobsConsole
             return choiceKeys[choiceIdx];
         }
 
-        private static void PrintJobs(List<Dictionary<string, string>> someJobs)
+        private static void PrintJobs(IList<Dictionary<string, string>> someJobs)
         {
             for (int i=0; i < someJobs.Count; i++)
             {
